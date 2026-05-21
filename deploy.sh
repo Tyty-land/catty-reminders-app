@@ -1,7 +1,14 @@
 #!/bin/bash
+exec > /home/ubu/deploy.log 2>&1
+set -x
+
+BRANCH=${1:-lab1}
+
 cd /home/ubu/app-code
-# Скачиваем код ветки lab1
+
 git fetch origin
-git reset --hard origin/lab1
-# Перезапускаем сайт
+
+git checkout -B "$BRANCH" "origin/$BRANCH"
+git reset --hard "origin/$BRANCH"
+
 sudo systemctl restart catty-app.service
