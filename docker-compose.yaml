@@ -1,0 +1,25 @@
+version: '3.8'
+
+services:
+
+  db:
+    image: mysql:8.0
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: mypass
+      MYSQL_DATABASE: catty_reminders
+    volumes:
+      - db_data:/var/lib/mysql
+
+  web:
+    image: ghcr.io/tyty-land/catty-reminders-app:latest
+    restart: always
+    ports:
+      - "8181:8181"
+    environment:
+      - DEPLOY_REF=${DEPLOY_REF:-local}
+    depends_on:
+      - db
+
+volumes:
+  db_data:
