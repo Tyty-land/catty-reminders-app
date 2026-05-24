@@ -26,5 +26,5 @@ jobs:
               -p 8181:8181 \
               --name catty-app \
               --restart always \
-              -e DEPLOY_REF=${{ github.ref_name }} \
+              -e DEPLOY_REF=${{ github.sha }} \
               ghcr.io/tyty-land/catty-reminders-app:latest
