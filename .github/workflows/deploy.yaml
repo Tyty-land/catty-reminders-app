@@ -1,0 +1,24 @@
+name: CD Pipeline
+
+on:
+  release:
+    types: [published]
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Deploy to VM via SSH
+        uses: appleboy/ssh-action@v1.0.3
+        with:
+          host: course.prafdin.ru
+          port: 2200
+          username: ubu
+          key: ${{ secrets.SSH_PRIVATE_KEY }}
+          script: |
+            cd /home/ubu/app-code
+            git fetch origin
+            git reset --hard origin/lab2
+            export DEPLOY_REF=$(git rev-parse HEAD)
+            sudo systemctl restart catty-app.service
