@@ -18,7 +18,7 @@ jobs:
           key: ${{ secrets.SSH_PRIVATE_KEY }}
           script: |
             cd /home/ubu/app-code
-            git fetch origin
-            git reset --hard origin/lab2
+            git fetch origin --tags
+            git reset --hard ${{ github.ref_name }}
             export DEPLOY_REF=$(git rev-parse HEAD)
             sudo systemctl restart catty-app.service
