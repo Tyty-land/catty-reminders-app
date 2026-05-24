@@ -4,7 +4,6 @@ on:
   push:
   pull_request:
 
-# Даем права нашему GITHUB_TOKEN для публикации пакетов в GHCR
 permissions:
   contents: read
   packages: write
@@ -60,7 +59,7 @@ jobs:
         with:
           images: ghcr.io/tyty-land/catty-reminders-app
           tags: |
-            type=sha,format=long
+            type=sha,format=long,prefix=
             type=raw,value=latest
 
       - name: Build and push Docker image
