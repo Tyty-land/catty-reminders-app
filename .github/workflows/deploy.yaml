@@ -13,7 +13,7 @@ jobs:
         uses: appleboy/ssh-action@v1.0.3
         with:
           host: course.prafdin.ru
-          port: 2200
+          port: 3131
           username: ubu
           key: ${{ secrets.SSH_PRIVATE_KEY }}
           script: |
