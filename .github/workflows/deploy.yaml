@@ -20,5 +20,5 @@ jobs:
             cd /home/ubu/app-code
             git fetch origin --tags
             git reset --hard ${{ github.ref_name }}
-            export DEPLOY_REF=$(git rev-parse HEAD)
+            export DEPLOY_REF=${{ github.sha }}
             sudo systemctl restart catty-app.service
