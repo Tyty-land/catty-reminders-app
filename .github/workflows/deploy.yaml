@@ -23,5 +23,5 @@ jobs:
             export DEPLOY_REF=${{ github.sha }}
 
             docker compose down || true
-            docker compose pull
+            docker compose pull web
             docker compose up -d
