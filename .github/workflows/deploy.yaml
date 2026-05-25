@@ -20,6 +20,7 @@ jobs:
             docker stop catty-app || true
             docker rm catty-app || true
             
+            
             docker pull ghcr.io/tyty-land/catty-reminders-app:latest
             
             docker run -d \
