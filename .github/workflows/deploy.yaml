@@ -16,7 +16,7 @@ jobs:
           port: 3131
           username: ubu
           key: ${{ secrets.SSH_PRIVATE_KEY }}
-          commend_timeout: 20m
+          commend_timeout: 30m
           script: |
             cd /home/ubu/app-code
             git fetch origin --tags
