@@ -12,6 +12,7 @@ services:
       - db_data:/var/lib/mysql
 
   web:
+    build: .
     image: ghcr.io/tyty-land/catty-reminders-app:latest
     restart: unless-stopped
     ports:
