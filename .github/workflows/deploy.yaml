@@ -20,7 +20,6 @@ jobs:
             cd /home/ubu/app-code
             git fetch origin --tags
             git reset --hard ${{ github.ref_name }}
-            export DEPLOY_REF=${{ github.sha }}
 
             docker compose down || true
             docker compose pull web
